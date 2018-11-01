@@ -6,6 +6,7 @@ const SERVICE = {
 		DEW_POINT_TEMPERATURE: 'dewpointTemperature',
 		HUMIDITY: 'humidity',
 		TEMPERATURE: 'temperature',
+		FOG: 'fog',
 		LOW_CLOUDS: 'lowClouds',
 		MEDIUM_CLOUDS: 'mediumClouds',
 		HIGH_CLOUDS: 'highClouds',

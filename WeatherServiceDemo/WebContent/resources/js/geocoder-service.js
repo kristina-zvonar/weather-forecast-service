@@ -1,6 +1,11 @@
-function geocodeAddress() {
+function geocodeAddress(locationType) {
 	var geocoder = new google.maps.Geocoder();
-	var address = $('#address').val();
+	
+	var addressFieldId = LAYOUT.ID + locationType + 'Address';
+	var latFieldId = LAYOUT.ID + locationType + 'Latitude';
+	var lngFieldId = LAYOUT.ID + locationType + 'Longitude';
+	
+	var address = $(addressFieldId).val();
 	
 	geocoder.geocode({
 		'address' : address
@@ -10,15 +15,11 @@ function geocodeAddress() {
 			var latitude = result.lat();
 			var longitude = result.lng();
 			
-			testPrintGeocode(latitude, longitude);
+			$(latFieldId).val(latitude);
+			$(lngFieldId).val(longitude);
 		} else {
 			alert('Geocode was not successful for the following reason: '
 					+ status);
 		}
 	});
-}
-
-function testPrintGeocode(latitude, longitude) {
-	console.log("Latitude: " + latitude);
-	console.log("Longitude: " + longitude);
 }

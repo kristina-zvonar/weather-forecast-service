@@ -35,12 +35,16 @@ function getWeatherData(latitude, longitude, locationType) {
 	}
 }
 
-function latitudeValid(latitude) {
-	return typeof(latitude) === 'number' && latitude > -90 && latitude < 90;
+function latitudeValid(latitude) {	
+	var isNumber = typeof(latitude) === 'number' || (typeof(latitude) === 'string' && latitude.match(/\d+\.?\d*/) !== null);
+	console.log(isNumber);
+	return isNumber && latitude > -90 && latitude < 90;
 }
 
 function longitudeValid(longitude) {
-	return typeof(longitude) === 'number' && longitude > -180 && longitude < 180;
+	var isNumber = typeof(longitude) === 'number' || (typeof(longitude) === 'string' && longitude.match(/\d+\.?\d*/) !== null);
+	console.log(isNumber);
+	return isNumber && longitude > -180 && longitude < 180;
 }
 
 function displayOverview(dewPoint, humidity, temperature, locationType) {
@@ -76,6 +80,9 @@ function displayDetails(fog, lowClouds, mediumClouds, highClouds, locationType) 
 	displayCloud(idLowClouds, lowClouds);
 	displayCloud(idMediumClouds, mediumClouds);
 	displayCloud(idHighClouds, highClouds);
+	
+	var formId = LAYOUT.ID + locationType + 'Form';
+	$(formId).fadeOut();
 }
 
 function displayCloud(prefix, value) {

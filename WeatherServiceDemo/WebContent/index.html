@@ -3,8 +3,106 @@
 	<head>
 		<meta charset="ISO-8859-1">
 		<title>Weather Service</title>
+		<link rel="stylesheet" href="resources/css/layout.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm2L1q8irCqVfgXrXBYbS8Ifek8gkBPZ0"></script>
+		<script src="resources/js/service-constants.js"></script>
+		<script src="resources/js/layout-constants.js"></script>
+		<script src="resources/js/weather-service.js"></script>
+		<script src="resources/js/geocoder-service.js"></script>
+		<script>
+			$(document).ready(function(){
+				getWeatherData(11.43, 12.12, 'departure');
+				getWeatherData(45.267135, 19.83355, 'destination');
+				//geocodeAddress();				
+			});
+		</script>
 	</head>
 	<body>
-	
+		<div class="hor_centered">
+			<div>
+				
+			</div>
+			<div id="dataDiv" class="grid_container">
+				<div id="departureWeatherOverview" class="weather_overview grid_item">
+					<label>Departure Weather</label>
+					<br/>
+					<br/>
+					
+					<label id="departureDewPointLabel">Dew point:</label>
+					<label id="departureDewPointValue"></label>
+					<br/>
+					
+					<label id="departureHumidityLabel">Humidity:</label>
+					<label id="departureHumidityValue"></label>
+					<br/>
+					
+					<label id="departureTemperatureLabel">Temperature:</label>
+					<label id="departureTemperatureValue"></label>
+					<br/>
+				</div>
+				<div id="destinationWeatherOverview" class="weather_overview grid_item">
+					<label>Destination Weather</label>	
+					<br/>
+					<br/>
+					
+					<label id="destinationDewPointLabel">Dew point:</label>
+					<label id="destinationDewPointValue"></label>
+					<br/>
+					
+					<label id="destinationHumidityLabel">Humidity:</label>
+					<label id="destinationHumidityValue"></label>
+					<br/>
+					
+					<label id="destinationTemperatureLabel">Temperature:</label>
+					<label id="destinationTemperatureValue"></label>
+					<br/>
+				</div>
+				<div id="departureWeatherDetails" class="row_flex grid_item">
+					<div>
+						<label id="departureFog"></label>
+						<label>Fog</label>
+						<img id="departureFogImg" src="resources/images/sun.png" alt="Sun">
+					</div>
+					<div>
+						<label id="departureLowClouds"></label>
+						<label>Low Clouds</label>
+						<img id="departureLowCloudsImg" src="resources/images/clouds.jpg" alt="Clouds">
+					</div>
+					<div>
+						<label id="departureMediumClouds"></label>
+						<label>Medium Clouds</label>
+						<img id="departureMediumCloudsImg" src="resources/images/clouds.jpg" alt="Clouds">
+					</div>
+					<div>
+						<label id="departureHighClouds"></label>
+						<label>High Clouds</label>
+						<img id="departureHighCloudsImg" src="resources/images/clouds.jpg" alt="Clouds">
+					</div>
+				</div>
+				<div id="destinationWeatherDetails" class="row_flex grid_item">
+					<div>
+						<label id="destinationFog"></label>
+						<label>Fog</label>
+						<img id="destinationFogImg" src="resources/images/sun.png" alt="Sun">
+					</div>
+					<div>
+						<label id="destinationLowClouds"></label>
+						<label>Low Clouds</label>
+						<img id="destinationLowCloudsImg" src="resources/images/clouds.jpg" alt="Clouds">
+					</div>
+					<div>
+						<label id="destinationMediumClouds"></label>
+						<label>Medium Clouds</label>
+						<img id="destinationMediumCloudsImg" src="resources/images/clouds.jpg" alt="Clouds">
+					</div>
+					<div>
+						<label id="destinationHighClouds"></label>
+						<label>High Clouds</label>
+						<img id="destinationHighCloudsImg" src="resources/images/clouds.jpg" alt="Clouds">
+					</div>
+				</div>
+			</div>			
+		</div>
 	</body>
 </html>

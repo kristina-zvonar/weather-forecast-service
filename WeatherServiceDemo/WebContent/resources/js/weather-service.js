@@ -18,11 +18,13 @@ function getWeatherData(latitude, longitude, locationType) {
 			var dewPoint = data.find(SERVICE.DEW_POINT_TEMPERATURE).attr(SERVICE.VALUE);
 			var humidity = data.find(SERVICE.HUMIDITY).attr(SERVICE.VALUE);
 			var temperature = data.find(SERVICE.TEMPERATURE).attr(SERVICE.VALUE);
+			var fog = data.find(SERVICE.FOG).attr(SERVICE.PERCENT);
 			var lowClouds = data.find(SERVICE.LOW_CLOUDS).attr(SERVICE.PERCENT);
 			var mediumClouds = data.find(SERVICE.MEDIUM_CLOUDS).attr(SERVICE.PERCENT);
 			var highClouds = data.find(SERVICE.HIGH_CLOUDS).attr(SERVICE.PERCENT);
 			
-			testPrint(dewPoint, humidity, temperature, lowClouds, mediumClouds, highClouds);
+			displayOverview(dewPoint, humidity, temperature, locationType);
+			displayDetails(fog, lowClouds, mediumClouds, highClouds, locationType);
 		});
 		
 		ajaxRequest.fail(function(){
@@ -41,11 +43,75 @@ function longitudeValid(longitude) {
 	return typeof(longitude) === 'number' && longitude > -180 && longitude < 180;
 }
 
-function testPrint(dewPoint, humidity, temperature, lowClouds, mediumClouds, highClouds) {
-	console.log("Dew point: " + dewPoint);
-	console.log("Humidity: " + humidity);
-	console.log("Temperature: " + temperature); 
-	console.log("Low clouds: " + lowClouds);
-	console.log("Medium clouds: " + mediumClouds);
-	console.log("High clouds: " + highClouds);
+function displayOverview(dewPoint, humidity, temperature, locationType) {
+	var idDewPoint = LAYOUT.ID + locationType + LAYOUT.DEW_POINT;
+	var idHumidity = LAYOUT.ID + locationType + LAYOUT.HUMIDITY;
+	var idTemperature = LAYOUT.ID + locationType + LAYOUT.TEMPERATURE;
+	
+	var displayDewPoint = dewPoint + '&#176;';
+	var displayHumidity = humidity + LAYOUT.PERCENT;
+	
+	$(idDewPoint).html(displayDewPoint);
+	$(idHumidity).html(displayHumidity);
+	$(idTemperature).html(temperature);
+}
+
+function displayDetails(fog, lowClouds, mediumClouds, highClouds, locationType) {
+	var idFog = LAYOUT.ID + locationType + LAYOUT.FOG;
+	var idLowClouds = LAYOUT.ID + locationType + LAYOUT.LOW_CLOUDS;
+	var idMediumClouds = LAYOUT.ID + locationType + LAYOUT.MEDIUM_CLOUDS;
+	var idHighClouds = LAYOUT.ID + locationType + LAYOUT.HIGH_CLOUDS;
+	
+	var displayFog = Math.round(fog) + LAYOUT.PERCENT;
+	var displayLowClouds = Math.round(lowClouds) + LAYOUT.PERCENT;
+	var displayMediumClouds = Math.round(mediumClouds) + LAYOUT.PERCENT;
+	var displayHighClouds = Math.round(highClouds) + LAYOUT.PERCENT;
+	
+	$(idFog).html(displayFog);
+	$(idLowClouds).html(displayLowClouds);
+	$(idMediumClouds).html(displayMediumClouds);
+	$(idHighClouds).html(displayHighClouds);
+	
+	displaySun(idFog, fog);
+	displayCloud(idLowClouds, lowClouds);
+	displayCloud(idMediumClouds, mediumClouds);
+	displayCloud(idHighClouds, highClouds);
+}
+
+function displayCloud(prefix, value) {
+	var id = prefix + 'Img';
+	var opacity;
+	
+	if(value <= 20) {
+		opacity = 0.0;
+	} else if(value > 20 && value <= 50) {
+		opacity = 0.5;
+	} else if(value >= 50) {
+		opacity = 1.0;
+	}
+	$(id).css('opacity', opacity);
+	
+	if(prefix.includes(LAYOUT.LOW_CLOUDS)) {
+		$(id).css('bottom', 20);
+	} else if(prefix.includes(LAYOUT.MEDIUM_CLOUDS)) {
+		$(id).css('bottom', 40);
+	} else {
+		$(id).css('bottom', 60);
+	}
+}
+
+function displaySun(prefix, value) {
+	var id = prefix + 'Img';
+	var opacity;
+	
+	if(value <= 20) {
+		opacity = 1.0;
+	} else if(value > 20 && value <= 50) {
+		opacity = 0.5;
+	} else if(value >= 50) {
+		opacity = 0.0;
+	}
+	
+	$(id).css('opacity', opacity);
+	$(id).css('margin-left', '-40%');
 }

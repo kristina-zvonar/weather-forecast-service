@@ -10,20 +10,62 @@
 		<script src="resources/js/layout-constants.js"></script>
 		<script src="resources/js/weather-service.js"></script>
 		<script src="resources/js/geocoder-service.js"></script>
-		<script>
-			$(document).ready(function(){
-				getWeatherData(11.43, 12.12, 'departure');
-				getWeatherData(45.267135, 19.83355, 'destination');
-				//geocodeAddress();				
-			});
-		</script>
+		<script src="resources/js/init.js"></script>		
 	</head>
 	<body>
 		<div class="hor_centered">
-			<div>
-				
+			<div class="grid_container upper_half shorter">
+				<div id="departureDiv" class="button_like shorter">
+					<label>Departure (by name)</label>
+				</div>
+				<div id="destinationDiv" class="button_like">
+					<label>Destination</label>
+				</div>
+				<div class="grid_container">
+					<form id="departureForm">
+					    <label for="address">Address</label>
+					    <input id="departureAddress" type="text" autofocus>
+					    
+					    <label></label>
+					    <button type="button" onclick="geocodeAddress('departure')">Geocode</button>
+					 
+					    <label>OR ENTER COORDINATES</label>
+					    <label>------------</label>
+					 
+					    <label>Latitude</label>
+					    <input id="departureLatitude" type="text">
+					    
+					    <label>Longitude</label>
+					    <input id="departureLongitude" type="text">
+					    
+					    <label></label>
+					    <button id="departureButton" type="button">Submit</button>
+					 
+					</form>
+				</div>
+				<div>
+					<form id="destinationForm">
+					    <label for="address">Address</label>
+					    <input id="destinationAddress" type="text" autofocus>
+					    
+					    <label></label>
+					    <button type="button" onclick="geocodeAddress('destination')">Geocode</button>
+					 
+					    <label>OR ENTER COORDINATES</label>
+					    <label>------------</label>
+					 
+					    <label>Latitude</label>
+					    <input id="destinationLatitude" type="text">
+					    
+					    <label>Longitude</label>
+					    <input id="destinationLongitude" type="text">
+					    
+					    <label></label>
+					    <button id="destinationButton" type="button">Submit</button>					 
+					</form>
+				</div>
 			</div>
-			<div id="dataDiv" class="grid_container">
+			<div id="dataDiv" class="grid_container data_container">
 				<div id="departureWeatherOverview" class="weather_overview grid_item">
 					<label>Departure Weather</label>
 					<br/>

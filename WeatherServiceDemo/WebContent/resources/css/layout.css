@@ -1,4 +1,5 @@
 @charset "ISO-8859-1";
+/* General */
 
 body { 
   background: #FFFFFF;
@@ -11,19 +12,34 @@ label {
 	font-size: 0.9em;
 }
 
+/* Data display related CSS */
+
 .hor_centered {
 	min-width: 40%;
 	max-width: 40%;
 	margin: auto;
 }
 
+/* Weather information overview */
+.weather_overview {
+	border-radius: 5%;
+	background: #dbe9ff;
+	margin-right: 1%;
+	padding: 5%;
+	color: #01368c;
+}
+
+/* Weather information details */
 .grid_container {
 	margin: auto;
 	display: grid;
 	grid-template-columns: auto auto;
 	grid-gap: 10px;
-	background: white;
 	min-width: 250px;		
+}
+
+.data_container {
+	background: white;
 }
 
 .grid_item {
@@ -42,14 +58,6 @@ label {
 .column_flex {
 	display: flex;
 	flex-flow: column;
-}
-
-.weather_overview {
-	border-radius: 5%;
-	background: #dbe9ff;
-	margin-right: 1%;
-	padding: 5%;
-	color: #01368c;
 }
 
 div [id$='Details'] > div {
@@ -82,3 +90,60 @@ img {
 	left: 0;
 	bottom: 20px;
 }
+
+/* Input-related CSS */
+.button_like {
+	border-style: solid;
+	border-width: 3px;
+	background-color: white;
+	font-size: 1.2em;
+	height: 50px;
+	width: 280px;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#inputDiv {
+	margin-bottom: 15px;
+	height: 50px;
+	justify-content: space-between;
+}
+
+#inputDiv > label {
+	display: flex;
+	flex-flow: row;
+	align-items: center;
+	border-style: solid;
+	border-width: 3px;
+	height: 100%;
+	
+	background-color: white;
+	font-size: 1.2em;
+}
+
+form {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 15px;
+    padding: 5px;
+    background-color: #dbe9ff;
+    
+}
+
+button {
+	background-color: #75a9ff;
+}
+
+.shorter {
+	margin: 0;
+	
+}
+
+.upper_half {
+	margin-bottom: 15px;
+}
+
+
+
+

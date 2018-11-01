@@ -99,27 +99,10 @@ img {
 	font-size: 1.2em;
 	height: 50px;
 	width: 280px;
+	min-width: fit-content;
 	display: flex;
     justify-content: center;
     align-items: center;
-}
-
-#inputDiv {
-	margin-bottom: 15px;
-	height: 50px;
-	justify-content: space-between;
-}
-
-#inputDiv > label {
-	display: flex;
-	flex-flow: row;
-	align-items: center;
-	border-style: solid;
-	border-width: 3px;
-	height: 100%;
-	
-	background-color: white;
-	font-size: 1.2em;
 }
 
 form {
@@ -127,8 +110,7 @@ form {
     grid-template-columns: auto auto;
     grid-gap: 15px;
     padding: 5px;
-    background-color: #dbe9ff;
-    
+    background-color: #dbe9ff;    
 }
 
 button {
@@ -137,13 +119,9 @@ button {
 
 .shorter {
 	margin: 0;
-	
 }
 
 .upper_half {
 	margin-bottom: 15px;
 }
-
-
-
 

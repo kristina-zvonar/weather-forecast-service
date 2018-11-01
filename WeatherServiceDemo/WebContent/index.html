@@ -6,10 +6,10 @@
 		<link rel="stylesheet" href="resources/css/layout.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm2L1q8irCqVfgXrXBYbS8Ifek8gkBPZ0"></script>
-		<script src="resources/js/service-constants.js"></script>
-		<script src="resources/js/layout-constants.js"></script>
-		<script src="resources/js/weather-service.js"></script>
-		<script src="resources/js/geocoder-service.js"></script>
+		<script src="resources/js/util.js"></script>
+		<script src="resources/js/cache.js"></script>
+		<script src="resources/js/service_client/weather-service.js"></script>
+		<script src="resources/js/service_client/geocoder-service.js"></script>
 		<script src="resources/js/init.js"></script>		
 	</head>
 	<body>
@@ -27,7 +27,7 @@
 					    <input id="departureAddress" type="text" autofocus>
 					    
 					    <label></label>
-					    <button type="button" onclick="geocodeAddress('departure')">Geocode</button>
+					    <button id="departureGeocode" type="button" onclick="geocodeAddress('departure')">Geocode</button>
 					 
 					    <label>OR ENTER COORDINATES</label>
 					    <label>------------</label>
@@ -49,7 +49,7 @@
 					    <input id="destinationAddress" type="text" autofocus>
 					    
 					    <label></label>
-					    <button type="button" onclick="geocodeAddress('destination')">Geocode</button>
+					    <button id="destinationGeocode" type="button" onclick="geocodeAddress('destination')">Geocode</button>
 					 
 					    <label>OR ENTER COORDINATES</label>
 					    <label>------------</label>

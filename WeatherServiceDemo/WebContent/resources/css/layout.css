@@ -15,8 +15,7 @@ label {
 /* Data display related CSS */
 
 .hor_centered {
-	min-width: 40%;
-	max-width: 40%;
+	width: 550px;
 	margin: auto;
 }
 
@@ -43,7 +42,7 @@ label {
 }
 
 .grid_item {
-	min-width: 50%;
+	
 }
 
 .row_flex {
@@ -68,14 +67,13 @@ div [id$='Details'] > div {
 	padding: 3px;
 	margin-right: 2px;
 	color: white;
-	overflow: hidden;
-	
+	overflow: hidden;	
 	display: flex;
 	flex-flow: column;
 }
 
 div [id$='Details'] > div >label:first-child {
-	font-size: 1.6em;
+	font-size: 1.4em;
 }
 
 div [id$='Overview'] > label[id$='Label'] {
@@ -83,8 +81,8 @@ div [id$='Overview'] > label[id$='Label'] {
 }
 
 img {
-	width: 60px;
-	height: 60px;
+	width: 100px;
+	height: 100px;
 	border-style: none;
 	position: absolute;
 	left: 0;
@@ -98,8 +96,7 @@ img {
 	background-color: white;
 	font-size: 1.2em;
 	height: 50px;
-	width: 280px;
-	min-width: fit-content;
+	width: 250px;
 	display: flex;
     justify-content: center;
     align-items: center;
@@ -113,15 +110,15 @@ form {
     background-color: #dbe9ff;    
 }
 
+form > input, form > label, form > button {
+	width: 110px;
+}
+
 button {
 	background-color: #75a9ff;
 }
 
-.shorter {
-	margin: 0;
-}
-
 .upper_half {
-	margin-bottom: 15px;
+	margin-bottom: 25px;
 }
 

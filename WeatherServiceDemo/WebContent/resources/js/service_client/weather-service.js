@@ -108,13 +108,6 @@ function displayCloud(prefix, value) {
 	}
 	$(id).css('opacity', opacity);
 
-	if (prefix.includes(LAYOUT.LOW_CLOUDS)) {
-		$(id).css('bottom', 20);
-	} else if (prefix.includes(LAYOUT.MEDIUM_CLOUDS)) {
-		$(id).css('bottom', 40);
-	} else {
-		$(id).css('bottom', 60);
-	}
 }
 
 function displaySun(prefix, value) {
@@ -130,5 +123,4 @@ function displaySun(prefix, value) {
 	}
 
 	$(id).css('opacity', opacity);
-	$(id).css('margin-left', '-40%');
 }

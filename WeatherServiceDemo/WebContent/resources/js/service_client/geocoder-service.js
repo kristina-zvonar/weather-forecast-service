@@ -24,8 +24,8 @@ function geocodeAddress(locationType) {
 			if (status === 'OK') {
 				var result = results[0].geometry.location;
 
-				latitude = result.lat();
-				longitude = result.lng();
+				latitude = result.lat().toFixed(5);
+				longitude = result.lng().toFixed(5);
 
 				$(latFieldId).val(latitude);
 				$(lngFieldId).val(longitude);
